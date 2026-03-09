@@ -1,0 +1,7 @@
+name: MinecraftNoticePlugin
+version: 1.0.0
+main: org.megoru.ru.Main
+description: Уведомляет о заходах на сервер в Discord через WebHook
+author: megoRU
+website: https://megoru.ru
+api-version: '1.21.11'
