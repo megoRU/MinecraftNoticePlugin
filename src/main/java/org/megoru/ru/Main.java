@@ -37,7 +37,7 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         String player = event.getPlayer().getName();
-        sendDiscord("👤 **" + player + "** joined the server");
+        sendDiscord("**" + player + "** joined the server");
     }
 
     private void sendDiscord(String message) {
