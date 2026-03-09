@@ -14,6 +14,9 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
         saveDefaultConfig();
 
         String url = getConfig().getString("webhook");
