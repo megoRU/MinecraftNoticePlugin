@@ -79,7 +79,6 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
 
             if (!joinBuffer.isEmpty()) {
-
                 List<String> players;
 
                 synchronized (joinBuffer) {
@@ -88,15 +87,13 @@ public class Main extends JavaPlugin implements Listener {
                 }
 
                 if (players.size() == 1) {
-
                     String msg = getConfig().getString("join_message");
 
                     if (msg != null && !msg.isBlank()) {
-                        sendDiscord(String.format(msg, players.get(0)));
+                        sendDiscord(String.format(msg, players.getFirst()));
                     }
 
                 } else {
-
                     String msg = getConfig().getString("join_batch_message");
 
                     if (msg != null && !msg.isBlank()) {
@@ -106,7 +103,6 @@ public class Main extends JavaPlugin implements Listener {
             }
 
             if (!quitBuffer.isEmpty()) {
-
                 List<String> players;
 
                 synchronized (quitBuffer) {
@@ -123,7 +119,6 @@ public class Main extends JavaPlugin implements Listener {
                     }
 
                 } else {
-
                     String msg = getConfig().getString("quit_batch_message");
 
                     if (msg != null && !msg.isBlank()) {
@@ -131,7 +126,6 @@ public class Main extends JavaPlugin implements Listener {
                     }
                 }
             }
-
         }, 100L, 100L);
     }
 
