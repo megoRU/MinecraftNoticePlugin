@@ -19,10 +19,16 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         if (!getDataFolder().exists()) {
-            getDataFolder().mkdirs();
+            boolean mkdir = getDataFolder().mkdirs();
+            getLogger().info("MinecraftNoticePlugin created: " + mkdir);
         }
 
         saveDefaultConfig();
+
+        reloadConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+
         webhook = getConfig().getString("webhook");
 
         if (webhook == null || webhook.isBlank() || webhook.equals("https://discord.com/api/webhooks/ID/TOKEN")) {
@@ -37,15 +43,22 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         String player = event.getPlayer().getName();
-        sendDiscord("**" + player + "** joined the server");
+        String textMessage = getConfig().getString("text_message");
+
+        if (textMessage == null || textMessage.isBlank()) {
+            getLogger().warning("text_message not set in config.yml");
+            return;
+        }
+
+        sendDiscord(String.format(textMessage, player));
     }
 
     private void sendDiscord(String message) {
         String json = """
-            {
-              "content": "%s"
-            }
-            """.formatted(message);
+                {
+                  "content": "%s"
+                }
+                """.formatted(message);
 
         try {
             HttpRequest request = HttpRequest.newBuilder()

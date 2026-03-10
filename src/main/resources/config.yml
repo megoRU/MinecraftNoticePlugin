@@ -1,1 +1,19 @@
+# =========================================
+# Discord Webhook
+# =========================================
+# How to create a webhook:
+# 1. Open Discord
+# 2. Go to the text channel where you want messages to be sent
+# 3. Click the channel settings (gear icon)
+# 4. Open "Integrations"
+# 5. Click "Webhooks"
+# 6. Click "Create Webhook"
+# 7. Press "Copy Webhook URL"
+# 8. Paste the URL below instead of ID/TOKEN
 webhook: "https://discord.com/api/webhooks/ID/TOKEN"
+
+# =========================================
+# Message sent to Discord
+# %s will be replaced with the player name
+# =========================================
+text_message: "**%s** joined the server"
