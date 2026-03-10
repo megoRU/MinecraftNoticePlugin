@@ -16,4 +16,12 @@ webhook: "https://discord.com/api/webhooks/ID/TOKEN"
 # Message sent to Discord
 # %s will be replaced with the player name
 # =========================================
-text_message: "**%s** joined the server"
+join_message: "**%s** joined the server"
+quit_message: "**%s** left the server"
+join_batch_message: "Players joined: %s"
+quit_batch_message: "Players left: %s"
+
+# Players that will not trigger webhook messages
+ignore_players:
+  - Notch
+  - Herobrine
