@@ -108,7 +108,6 @@ public class Main extends JavaPlugin implements Listener {
                 }
 
                 if (players.size() == 1) {
-
                     String msg = getConfig().getString("quit_message");
 
                     if (msg != null && !msg.isBlank()) {
@@ -142,7 +141,6 @@ public class Main extends JavaPlugin implements Listener {
                     .build();
 
             client.sendAsync(request, HttpResponse.BodyHandlers.discarding());
-
         } catch (Exception e) {
             getLogger().warning("Discord error: " + e.getMessage());
         }
