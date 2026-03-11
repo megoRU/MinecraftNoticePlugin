@@ -16,12 +16,9 @@ import java.util.*;
 public class Main extends JavaPlugin implements Listener {
 
     private final HttpClient client = HttpClient.newHttpClient();
-
     private final List<String> joinBuffer = Collections.synchronizedList(new ArrayList<>());
     private final List<String> quitBuffer = Collections.synchronizedList(new ArrayList<>());
-
     private Set<String> ignorePlayers;
-
     private String webhook;
 
     @Override
@@ -90,7 +87,7 @@ public class Main extends JavaPlugin implements Listener {
                     String msg = getConfig().getString("join_message");
 
                     if (msg != null && !msg.isBlank()) {
-                        sendDiscord(String.format(msg, players.getFirst()));
+                        sendDiscord(String.format(msg, players.get(0)));
                     }
 
                 } else {
